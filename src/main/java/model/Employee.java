@@ -25,6 +25,14 @@ public class Employee {
         this.phone = phone;
         this.position = position;
     }
+    public Employee(int id ,String name, String email, String post, String phone, String position) {
+        this.name = name;
+        this.email = email;
+        this.post = post;
+        this.phone = phone;
+        this.position = position;
+        this.id = id;
+    }
 
     public Employee() {
     }

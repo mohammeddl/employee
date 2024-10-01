@@ -54,5 +54,30 @@ public class EmployeeDAO {
         }
     }
     
+
+    public Employee getEmployee(int id) {
+        Employee employee = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employee = session.get(Employee.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employee;
+    }
+
+    public void updateEmployee(Employee employee) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(employee);
+            transaction.commit();
+            System.out.println("Employee updated successfully");
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }
 

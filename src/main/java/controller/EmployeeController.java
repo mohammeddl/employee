@@ -30,7 +30,7 @@ public class EmployeeController extends HttpServlet {
                 listEmployees(req, res); 
                 break;
             case "edit":
-                // showEditForm(req, res); 
+                showEditForm(req, res); 
                 break;
             case "delete":
                 deleteEmployee(req, res); 
@@ -49,7 +49,7 @@ public class EmployeeController extends HttpServlet {
                 createEmployee(req, res); 
                 break;
             case "update":
-                // updateEmployee(req, res); 
+                updateEmployee(req, res); 
                 break;
             default:
                 listEmployees(req, res); 
@@ -70,6 +70,19 @@ public class EmployeeController extends HttpServlet {
         res.sendRedirect("employee?action=list");
     }
 
+    private void updateEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String post = req.getParameter("post");
+        String phone = req.getParameter("phone");
+        String position = req.getParameter("position");
+
+        Employee employee = new Employee(id,name, email, post, phone, position);
+        employeeDAO.updateEmployee(employee);
+        res.sendRedirect("employee?action=list");
+    }
+
 
     private void listEmployees(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         List<Employee> employees = employeeDAO.getEmployees();
@@ -82,6 +95,13 @@ public class EmployeeController extends HttpServlet {
         employeeDAO.deleteEmployee(id);
         req.setAttribute("message", "Employee deleted successfully");
         res.sendRedirect("employee?action=list");
+    }
+
+    private void showEditForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        Employee existingEmployee = employeeDAO.getEmployee(id);
+        req.setAttribute("employee", existingEmployee);
+        req.getRequestDispatcher("modifyEmployee.jsp").forward(req, res);
     }
     
 }
