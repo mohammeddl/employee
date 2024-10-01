@@ -26,7 +26,15 @@ public class EmployeeDAO {
         }
     }
 
-    
+    public List<Employee> getEmployees() {
+        List<Employee> employees = new ArrayList<>(); 
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employees = session.createQuery("from Employee", Employee.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employees; 
+    }
     
 }
 
