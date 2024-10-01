@@ -20,6 +20,7 @@
                 <th>Phone</th>
                 <th>Department</th>
                 <th>Position</th>
+                <th>Actions</th>
             </tr>
             <c:forEach var="employee" items="${employees}">
                 <tr>
@@ -29,6 +30,10 @@
                     <td>${employee.phone}</td>
                     <td>${employee.post}</td>
                     <td>${employee.position}</td>
+                    <td>
+                        <a href="employee?action=edit&id=${employee.id}">Edit</a>
+                        <a href="employee?action=delete&id=${employee.id}">Delete</a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
