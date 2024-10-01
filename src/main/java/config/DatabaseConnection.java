@@ -19,4 +19,16 @@ public class DatabaseConnection {
             throw new SQLException("PostgreSQL JDBC Driver not found.");
         }
     }
+
+    public static void checkConnection() {
+        try {
+            Connection connection = getConnection();
+            System.out.println("Connection established successfully.");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connection failed.");
+        }
+    }
+    
 }
