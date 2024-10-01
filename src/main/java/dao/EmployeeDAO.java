@@ -35,6 +35,24 @@ public class EmployeeDAO {
         }
         return employees; 
     }
+
+    public void deleteEmployee(int id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Employee employee = session.get(Employee.class, id);
+            if (employee != null) {
+                session.delete(employee);
+                System.out.println("Employee deleted successfully");
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
     
 }
 
