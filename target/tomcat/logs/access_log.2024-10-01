@@ -9,3 +9,9 @@
 0:0:0:0:0:0:0:1 - - [01/Oct/2024:10:20:29 +0100] "GET /addEmpolyee.jsp HTTP/1.1" 404 981 http-bio-9080-exec-4 1
 0:0:0:0:0:0:0:1 - - [01/Oct/2024:10:21:09 +0100] "GET /index.jsp HTTP/1.1" 200 163 http-bio-9080-exec-5 526
 0:0:0:0:0:0:0:1 - - [01/Oct/2024:10:21:25 +0100] "GET /addEmployee.jsp HTTP/1.1" 200 837 http-bio-9080-exec-7 63
+0:0:0:0:0:0:0:1 - - [01/Oct/2024:11:37:36 +0100] "GET /addEmployee.jsp HTTP/1.1" 200 834 http-bio-9080-exec-1 593
+0:0:0:0:0:0:0:1 - - [01/Oct/2024:11:38:15 +0100] "GET /addEmployee.jsp HTTP/1.1" 200 835 http-bio-9080-exec-4 57
+0:0:0:0:0:0:0:1 - - [01/Oct/2024:11:38:19 +0100] "POST /employee HTTP/1.1" 500 2664 http-bio-9080-exec-6 295
+0:0:0:0:0:0:0:1 - - [01/Oct/2024:11:41:12 +0100] "GET /addEmployee.jsp HTTP/1.1" 200 835 http-bio-9080-exec-7 3
+0:0:0:0:0:0:0:1 - - [01/Oct/2024:11:41:16 +0100] "POST /employee HTTP/1.1" 500 2327 http-bio-9080-exec-8 6
+0:0:0:0:0:0:0:1 - - [01/Oct/2024:11:42:30 +0100] "GET /addEmployee.jsp HTTP/1.1" 200 835 http-bio-9080-exec-10 4
