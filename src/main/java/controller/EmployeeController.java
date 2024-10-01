@@ -32,7 +32,16 @@ public class EmployeeController extends HttpServlet {
     }
 
 
-
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        List<Employee> employees = employeeDAO.getEmployees();
+    
+        // employees.stream().forEach(t-> System.out.println(t.getName()));
+    
+        req.setAttribute("employees", employees);
+        req.getRequestDispatcher("index.jsp").forward(req, res);
+    }
+    
     
     
 }
