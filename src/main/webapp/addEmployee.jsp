@@ -10,6 +10,7 @@
 
     <form action="employee" method="post">
         <label for="name">Name:</label>
+        <input type="hidden" name="action" value="create" required>
         <input type="text" id="name" name="name" required>
         <br>
         <label for="email">Email:</label>
