@@ -79,5 +79,46 @@ public class EmployeeDAO {
             e.printStackTrace();
         }
     }
+
+    
+    public List<Employee> searchEmployee(String keyword) {
+        List<Employee> employees = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employees = session.createQuery("from Employee e where e.name like :keyword or e.email like :keyword or e.post like :keyword or e.phone like :keyword or e.position like :keyword", Employee.class)
+                    .setParameter("keyword", "%" + keyword + "%")
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+
+    public List<Employee> filterEmployeeByPosition(String position) {
+        List<Employee> employees = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employees = session.createQuery("from Employee e where e.position = :position", Employee.class)
+                    .setParameter("position", position)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+    public List<Employee> filterEmployeeByPost(String post) {
+        List<Employee> employees = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employees = session.createQuery("from Employee e where e.post = :post", Employee.class)
+                    .setParameter("post", post)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+    
+    
+
 }
 

@@ -35,6 +35,12 @@ public class EmployeeController extends HttpServlet {
             case "delete":
                 deleteEmployee(req, res); 
                 break;
+            case "search":
+                searchEmployee(req, res); 
+                break;
+            case "filter":
+            filterEmployee(req, res);
+            break;
             default:
                 listEmployees(req, res); 
                 break;
@@ -104,4 +110,32 @@ public class EmployeeController extends HttpServlet {
         req.getRequestDispatcher("modifyEmployee.jsp").forward(req, res);
     }
     
+    
+    private void searchEmployee(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String keyword = req.getParameter("keyword");
+        List<Employee> employees = employeeDAO.searchEmployee(keyword);
+        if(employees.isEmpty()) {
+            req.setAttribute("message", "No result found");
+        }else {
+            req.setAttribute("message", "Search result");
+        }
+        req.setAttribute("employees", employees);
+        req.getRequestDispatcher("index.jsp").forward(req, res);
+    }
+
+    private void filterEmployee(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        String position = req.getParameter("position");
+        String post = req.getParameter("post");
+        if(position != null) {
+            List<Employee> employees = employeeDAO.filterEmployeeByPosition(position);
+            req.setAttribute("message", "Filter result by position");
+            req.setAttribute("employees", employees);
+        }else if(post != null) {
+            List<Employee> employees = employeeDAO.filterEmployeeByPost(post);
+            req.setAttribute("message", "Filter result by post");
+            req.setAttribute("employees", employees);
+        }
+        req.getRequestDispatcher("index.jsp").forward(req, res);
+
+    }
 }
