@@ -79,5 +79,20 @@ public class EmployeeDAO {
             e.printStackTrace();
         }
     }
+
+    
+    public List<Employee> searchEmployee(String keyword) {
+        List<Employee> employees = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employees = session.createQuery("from Employee e where e.name like :keyword or e.email like :keyword or e.post like :keyword or e.phone like :keyword or e.position like :keyword", Employee.class)
+                    .setParameter("keyword", "%" + keyword + "%")
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+
 }
 

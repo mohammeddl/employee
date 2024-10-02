@@ -38,5 +38,12 @@
             </c:forEach>
         </table>
     </c:if>
+
+
+    <form action="employee" method="get">
+    <input type="hidden" name="action" value="search">
+    <input type="text" name="keyword" placeholder="Name or email">
+    <input type="submit" value="Search">
+    </form>
 </body>
 </html>

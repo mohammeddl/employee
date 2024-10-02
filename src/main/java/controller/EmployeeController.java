@@ -35,6 +35,9 @@ public class EmployeeController extends HttpServlet {
             case "delete":
                 deleteEmployee(req, res); 
                 break;
+            case "search":
+                searchEmployee(req, res); 
+                break;
             default:
                 listEmployees(req, res); 
                 break;
@@ -104,4 +107,17 @@ public class EmployeeController extends HttpServlet {
         req.getRequestDispatcher("modifyEmployee.jsp").forward(req, res);
     }
     
+    
+    private void searchEmployee(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String keyword = req.getParameter("keyword");
+        List<Employee> employees = employeeDAO.searchEmployee(keyword);
+        if(employees.isEmpty()) {
+            req.setAttribute("message", "No result found");
+        }else {
+            req.setAttribute("message", "Search result");
+        }
+        req.setAttribute("employees", employees);
+        req.getRequestDispatcher("index.jsp").forward(req, res);
+    }
+
 }
