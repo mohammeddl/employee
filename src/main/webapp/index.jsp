@@ -45,5 +45,9 @@
     <input type="text" name="keyword" placeholder="Name or email">
     <input type="submit" value="Search">
     </form>
+
+    <button onclick="window.location.href='employee?action=filter&post=dev'">dev</button>
+    <button onclick="window.location.href='employee?action=filter&position=test'">test</button>
+
 </body>
 </html>

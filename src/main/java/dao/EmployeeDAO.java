@@ -94,5 +94,31 @@ public class EmployeeDAO {
     }
 
 
+    public List<Employee> filterEmployeeByPosition(String position) {
+        List<Employee> employees = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employees = session.createQuery("from Employee e where e.position = :position", Employee.class)
+                    .setParameter("position", position)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+    public List<Employee> filterEmployeeByPost(String post) {
+        List<Employee> employees = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            employees = session.createQuery("from Employee e where e.post = :post", Employee.class)
+                    .setParameter("post", post)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+    
+    
+
 }
 
