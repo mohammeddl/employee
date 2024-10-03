@@ -73,7 +73,7 @@ public class EmployeeController extends HttpServlet {
 
         Employee newEmployee = new Employee(name, email, post, phone, position);
         employeeDAO.addEmployee(newEmployee);
-        res.sendRedirect("employee?action=list");
+        res.sendRedirect("employee?action=list&alertType=addSuccess");
     }
 
     private void updateEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -86,12 +86,17 @@ public class EmployeeController extends HttpServlet {
 
         Employee employee = new Employee(id,name, email, post, phone, position);
         employeeDAO.updateEmployee(employee);
-        res.sendRedirect("employee?action=list");
+        res.sendRedirect("employee?action=list&alertType=success&alertMessage=Employee updated successfully");
     }
-
 
     private void listEmployees(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         List<Employee> employees = employeeDAO.getEmployees();
+        String alertType = req.getParameter("alertType");
+        String alertMessage = req.getParameter("alertMessage");
+        if (alertType != null && alertMessage != null) {
+            req.setAttribute("alertType", alertType);
+            req.setAttribute("alertMessage", alertMessage);
+        }
         req.setAttribute("employees", employees);
         req.getRequestDispatcher("index.jsp").forward(req, res);
     }
@@ -99,9 +104,10 @@ public class EmployeeController extends HttpServlet {
     private void deleteEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         employeeDAO.deleteEmployee(id);
-        req.setAttribute("message", "Employee deleted successfully");
-        res.sendRedirect("employee?action=list");
+        res.sendRedirect("employee?action=list&alertType=success&alertMessage=Employee deleted successfully");
+        
     }
+    
 
     private void showEditForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
@@ -115,9 +121,8 @@ public class EmployeeController extends HttpServlet {
         String keyword = req.getParameter("keyword");
         List<Employee> employees = employeeDAO.searchEmployee(keyword);
         if(employees.isEmpty()) {
-            req.setAttribute("message", "No result found");
-        }else {
-            req.setAttribute("message", "Search result");
+            req.setAttribute("alertType", "error");
+            req.setAttribute("alertMessage", "No employee found");
         }
         req.setAttribute("employees", employees);
         req.getRequestDispatcher("index.jsp").forward(req, res);
@@ -132,7 +137,6 @@ public class EmployeeController extends HttpServlet {
             req.setAttribute("employees", employees);
         }else if(post != null) {
             List<Employee> employees = employeeDAO.filterEmployeeByPost(post);
-            req.setAttribute("message", "Filter result by post");
             req.setAttribute("employees", employees);
         }
         req.getRequestDispatcher("index.jsp").forward(req, res);

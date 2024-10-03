@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color: #a7a1ae;
+  background-color: #1f2739;
+}
+
+.employeeTitle{
+    text-align: center;
+    margin-top: 35px;
+}
+.form-container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #323c50;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.employee-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-form label {
+    font-weight: 700;
+    color: #fff;
+}
+
+.input-field {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    border-color: #4dc3fa;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(77, 195, 250, 0.5);
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #185875;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: #3b9fc7;
+}
+
+.employee-form input,
+.employee-form label {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
+}
