@@ -111,6 +111,35 @@ h2 a {
   color:#4dc3fa
 }
 
+.message {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.message .btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #2b93ca; 
+  color: white; 
+  font-size: 16px;
+  text-decoration: none; 
+  border-radius: 5px; 
+  border: 2px solid transparent; 
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.message .btn:hover {
+  background-color: #021f4d;
+  border-color: #0c1c7f; 
+  transform: scale(1.05); 
+}
+
+.message .btn:active {
+  background-color: #3e698e; 
+  transform: scale(1); 
+}
+
+
 .container tr:nth-child(odd) {
   background-color: #323c50;
 }

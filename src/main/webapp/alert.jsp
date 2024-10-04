@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!-- Success Alert -->
+
 <c:if test="${alertType == 'success'}">
     <div class="col-sm-12">
         <div class="alert fade alert-simple alert-success alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show">
             <button type="button" class="close font__size-18" data-dismiss="alert">
                 <span aria-hidden="true"><a><i class="fa fa-times greencross"></i></a></span>
-                <span class="sr-only">Close</span>
+                
             </button>
             <i class="start-icon far fa-check-circle faa-tada animated"></i>
             <strong class="font__weight-semibold">Well done!</strong> ${alertMessage}
@@ -15,7 +15,7 @@
     </div>
 </c:if>
 
-<!-- Error Alert -->
+
 <c:if test="${alertType == 'error'}">
     <div class="col-sm-12">
         <div class="alert fade alert-simple alert-danger alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show">
@@ -102,8 +102,8 @@ body
     box-shadow: 0px 0px 2px #ffb103;
     color: #ffb103;
     text-shadow: 2px 1px #00040a;
-  transition:0.5s;
-  cursor:pointer;
+    transition:0.5s;
+    cursor:pointer;
 }
 
 .alert-warning:hover{
@@ -160,7 +160,7 @@ body
 
 .alertprimary
 {
-      font-size: 18px;
+    font-size: 18px;
     color: #03d0ff;
     text-shadow: none;
 }
@@ -198,25 +198,11 @@ body
     border-radius: 45px;
 }
 
-.alert:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: calc(100% - 44px);
-    border-left: 1px solid;
-    border-right: 2px solid;
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-    left: 0;
-    top: 50%;
-    transform: translate(0,-50%);
-      height: 20px;
-}
 
 .fa-times
 {
 -webkit-animation: blink-1 2s infinite both;
-	        animation: blink-1 2s infinite both;
+animation: blink-1 2s infinite both;
 }
 
 

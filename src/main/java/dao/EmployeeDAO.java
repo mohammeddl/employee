@@ -79,7 +79,6 @@ public class EmployeeDAO {
             e.printStackTrace();
         }
     }
-
     
     public List<Employee> searchEmployee(String keyword) {
         List<Employee> employees = new ArrayList<>();
