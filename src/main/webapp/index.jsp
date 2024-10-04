@@ -22,7 +22,6 @@
         </div>
     </c:when>
 
-
 <c:when test="${!message}">
 
     <form action="employee" method="get" class="search-form">
