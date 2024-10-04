@@ -21,7 +21,6 @@
         <div class="alert fade alert-simple alert-danger alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show">
             <button type="button" class="close font__size-18" data-dismiss="alert">
                 <span aria-hidden="true"><i class="fa fa-times danger"></i></span>
-                <span class="sr-only">Close</span>
             </button>
             <i class="start-icon far fa-times-circle faa-tada animated"></i>
             <strong class="font__weight-semibold">Error!</strong> ${alertMessage}
